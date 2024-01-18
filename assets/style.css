@@ -164,10 +164,10 @@ button.btn_decrease {
     border-radius: 6px;
     padding: .3rem 1rem;
     font-size: 2rem;
+    margin-top: 3rem;
 }
 
 #set_message {
-    margin-top: 1rem;
     text-transform: uppercase;
     color: var(--font);
 }
@@ -193,16 +193,24 @@ button.btn_decrease {
 }
 
 @media (max-width: 768px) {
-    section {
-        padding: 3rem 0;
-        height: 100%;
-    }
-
     .counter:last-of-type {
         order: 3;
     }
 
     .team_pontuation:last-of-type {
         order: 4;
+    }
+
+    .counter,
+    .team_pontuation {
+        aspect-ratio: unset;
+    }
+
+    .counter {
+        gap: 1rem;
+    }
+
+    [data-step]:last-of-type {
+        padding-bottom: 2rem;
     }
 }
