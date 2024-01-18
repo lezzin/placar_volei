@@ -4,12 +4,12 @@
 }
 
 :root {
-    --bg-1: #111;
-    --bg-2: hsl(49, 100%, 51%);
-    --bg-3: hsl(49, 100%, 80%);
+    --bg-1: hsl(27, 83%, 30%);
+    --bg-2: hsl(27, 83%, 62%);
+    --bg-3: hsl(27, 83%, 80%);
 
-    --font: #fff;
-    --font-2: #000;
+    --font: hsl(0, 0%, 77%);
+    --font-2: hsl(165, 8%, 10%);
 }
 
 * {
@@ -43,7 +43,9 @@ html,
 body {
     font-family: sans-serif;
     scroll-behavior: smooth;
-    background-color: var(--bg-1);
+
+    background: url(./wallpaper.png) no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -53,6 +55,8 @@ body {
 }
 
 .card {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.175);
+    border: 2px solid var(--bg-1);
     background-color: var(--bg-2);
     border-radius: 3px;
     padding: 1rem;
@@ -101,12 +105,27 @@ form button {
     background-color: var(--bg-3);
 }
 
+.set_display {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.175);
+    border: 2px solid var(--bg-1);
+    background-color: var(--bg-3);
+    border-radius: 3px;
+    padding: .3rem 1.6rem;
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+
+#set_message {
+    text-transform: uppercase;
+    color: var(--font);
+}
+
 .counters_container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    margin-top: 2rem;
     width: inherit;
     gap: 1rem;
 }
@@ -117,11 +136,6 @@ form button {
     max-width: 300px;
     place-items: center;
     aspect-ratio: 1;
-    border: 6px solid transparent;
-}
-
-.counter.winner {
-    border-color: green;
 }
 
 .counter h3 {
@@ -149,27 +163,15 @@ form button {
     flex: 1;
     padding: 1rem 2rem;
     color: var(--font);
+    font-size: 1.8rem;
 }
 
 button.btn_increase {
-    background-color: green;
+    background-color: hsl(115, 52%, 39%);
 }
 
 button.btn_decrease {
-    background-color: red;
-}
-
-.set_display {
-    background-color: var(--bg-3);
-    border-radius: 6px;
-    padding: .3rem 1rem;
-    font-size: 2rem;
-    margin-top: 3rem;
-}
-
-#set_message {
-    text-transform: uppercase;
-    color: var(--font);
+    background-color: hsl(11, 74%, 47%);
 }
 
 .team_pontuation {
@@ -186,6 +188,8 @@ button.btn_decrease {
     margin-top: 2rem;
     display: none;
     background: var(--bg-3);
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.175);
+    border: 2px solid var(--bg-1);
 }
 
 [data-reset-btn].active {
@@ -193,7 +197,13 @@ button.btn_decrease {
 }
 
 @media (max-width: 768px) {
-    .counter:last-of-type {
+
+    html,
+    body {
+        /* background: var(--bg-2); */
+    }
+    
+     .counter:last-of-type {
         order: 3;
     }
 
