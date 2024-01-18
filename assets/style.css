@@ -162,6 +162,11 @@ form button {
     font-size: 1.8rem;
 }
 
+.teams_pontuation {
+    display: flex;
+    gap: 1rem;
+}
+
 button.btn_increase {
     background-color: hsl(115, 52%, 39%);
 }
@@ -202,14 +207,6 @@ button.btn_decrease {
         margin-top: 3rem;
     }
 
-    .counter:last-of-type {
-        order: 3;
-    }
-
-    .team_pontuation:last-of-type {
-        order: 4;
-    }
-
     .counter {
         gap: 1rem;
     }
@@ -217,7 +214,7 @@ button.btn_decrease {
     .counter p {
         font-size: 2.8rem;
     }
-    
+
     .team_pontuation {
         font-size: 2.6rem;
     }
@@ -228,5 +225,10 @@ button.btn_decrease {
 
     .counter button {
         padding: .6rem 1rem;
+    }
+
+    .teams_pontuation {
+        width: 100%;
+        justify-content: center;
     }
 }
