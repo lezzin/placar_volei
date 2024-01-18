@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'digital';
-    src: url('digital.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
     --bg-1: hsl(27, 83%, 30%);
@@ -44,7 +41,7 @@ button:hover {
 
 html,
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: url(./wallpaper.png) no-repeat fixed, var(--bg-2);
     background-size: cover;
 }
@@ -144,7 +141,6 @@ form button {
 }
 
 .counter p {
-    /* font-family: 'digital'; */
     background-color: var(--bg-3);
     border-radius: 6px;
     font-size: 3.6rem;
@@ -175,7 +171,6 @@ button.btn_decrease {
 }
 
 .team_pontuation {
-    /* font-family: 'digital'; */
     font-size: 2.6rem;
     display: grid;
     place-items: center;
