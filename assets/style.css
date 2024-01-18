@@ -145,7 +145,6 @@ form button {
 
 .counter p {
     font-family: 'digital';
-    font-variant-numeric: tabular-nums;
     background-color: var(--bg-3);
     border-radius: 6px;
     font-size: 3.6rem;
@@ -218,12 +217,7 @@ button.btn_decrease {
 
     .counter,
     .team_pontuation {
-        aspect-ratio: unset;
-    }
-
-    .team_pontuation,
-    .counter p {
-        font-size: 1.6rem;
+        aspect-ratio: initial;
     }
 
     .counter {
