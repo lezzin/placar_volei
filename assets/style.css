@@ -214,7 +214,15 @@ button.btn_decrease {
         gap: 1rem;
     }
 
+    .counter p {
+        font-size: 3rem;
+    }
+
     [data-step]:last-of-type {
         padding-bottom: 2rem;
+    }
+
+    .counter button {
+        padding: .6rem 1rem;
     }
 }
