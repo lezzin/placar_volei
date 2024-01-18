@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Placar para partidas de vôlei">
+    <meta name="author" content="Leandro Adrian da Silva">
+    <meta name="theme-color" content="#ffd105">
+
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="./logo.png">
+
+    <title>Placar para vôlei</title>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <section data-step class="active">
+                <form class="card" onsubmit="return false">
+                    <img src="./logo.png" alt="Logo do website" width="64" height="64" class="logo">
+
+                    <div class="form_group">
+                        <label for="set_quantity">Quantidade de sets:</label>
+                        <select id="set_quantity">
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <button type="button" data-btn-step>Configurar</button>
+                </form>
+            </section>
+
+            <section data-step>
+                <h3 class="set_display" data-set-display>1° set</h3>
+                <h4 id="set_message"></h4>
+
+                <div class="counters_container">
+                    <div class="counter card" data-counter data-team-pontuation="0">
+                        <h3 contenteditable="true">Time 1</h3>
+
+                        <p>0</p>
+
+                        <div class="counter_buttons">
+                            <button type="button" class="btn_increase">+</button>
+                            <button type="button" class="btn_decrease">-</button>
+                        </div>
+                    </div>
+
+                    <span class="card team_pontuation team_pontuation_0">0</span>
+                    <span class="card team_pontuation team_pontuation_1">0</span>
+
+                    <div class="counter card" data-counter data-team-pontuation="1">
+                        <h3 contenteditable="true">Time 2</h3>
+
+                        <p>0</p>
+
+                        <div class="counter_buttons">
+                            <button type="button" class="btn_increase">+</button>
+                            <button type="button" class="btn_decrease">-</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" data-reset-btn>Resetar</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+
+</html>

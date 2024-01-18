@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'digital';
+    src: url('digital.ttf');
+}
+
+:root {
+    --bg-1: #111;
+    --bg-2: hsl(49, 100%, 51%);
+    --bg-3: hsl(49, 100%, 80%);
+
+    --font: #fff;
+    --font-2: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input,
+select,
+button {
+    font: inherit;
+    outline: none;
+    border: none;
+
+    padding: .5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 .5rem rgb(0 0 0 / 0.15);
+}
+
+button {
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+button:hover {
+    filter: brightness(96%);
+}
+
+html,
+body {
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--bg-1);
+}
+
+.container {
+    width: calc(100% - 1rem);
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--bg-2);
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.logo {
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+section {
+    display: none;
+    place-items: center;
+    pointer-events: none;
+    width: inherit;
+}
+
+section.active {
+    pointer-events: initial;
+    display: grid;
+}
+
+form {
+    color: var(--font-2);
+
+    width: 100%;
+    max-width: 400px;
+    display: grid;
+    gap: 1rem;
+}
+
+form .form_group {
+    display: grid;
+    gap: .3rem;
+}
+
+form button {
+    background-color: var(--bg-3);
+}
+
+.counters_container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    width: inherit;
+    gap: 1rem;
+}
+
+.counter {
+    display: grid;
+    width: 100%;
+    max-width: 300px;
+    place-items: center;
+    aspect-ratio: 1;
+    border: 6px solid transparent;
+}
+
+.counter.winner {
+    border-color: green;
+}
+
+.counter h3 {
+    font-size: 2.2rem;
+}
+
+.counter p {
+    font-family: 'digital';
+    font-variant-numeric: tabular-nums;
+    background-color: var(--bg-3);
+    border-radius: 6px;
+    font-size: 3.6rem;
+    padding: .6rem;
+    width: 100%;
+    text-align: center;
+}
+
+.counter .counter_buttons {
+    display: flex;
+    width: 100%;
+    gap: 0.6rem;
+}
+
+.counter button {
+    flex: 1;
+    padding: 1rem 2rem;
+    color: var(--font);
+}
+
+button.btn_increase {
+    background-color: green;
+}
+
+button.btn_decrease {
+    background-color: red;
+}
+
+.set_display {
+    background-color: var(--bg-3);
+    border-radius: 6px;
+    padding: .3rem 1rem;
+    font-size: 2rem;
+}
+
+#set_message {
+    margin-top: 1rem;
+    text-transform: uppercase;
+    color: var(--font);
+}
+
+.team_pontuation {
+    font-family: 'digital';
+    font-size: 2.6rem;
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    padding: .6rem;
+    aspect-ratio: 1;
+}
+
+[data-reset-btn] {
+    margin-top: 2rem;
+    display: none;
+    background: var(--bg-3);
+}
+
+[data-reset-btn].active {
+    display: initial;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 0;
+        height: 100%;
+    }
+
+    .counter:last-of-type {
+        order: 3;
+    }
+
+    .team_pontuation:last-of-type {
+        order: 4;
+    }
+}
