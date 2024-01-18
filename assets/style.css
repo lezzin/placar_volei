@@ -200,6 +200,10 @@ button.btn_decrease {
 }
 
 @media (max-width: 768px) {
+    body {
+        background: var(--bg-2);
+    }
+
     .set_display {
         margin-top: 3rem;
     }
@@ -215,6 +219,11 @@ button.btn_decrease {
     .counter,
     .team_pontuation {
         aspect-ratio: unset;
+    }
+
+    .team_pontuation,
+    .counter p {
+        font-size: 1rem;
     }
 
     .counter {
