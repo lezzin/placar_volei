@@ -41,15 +41,8 @@ button:hover {
 
 body {
     font-family: 'Roboto', sans-serif;
-}
-
-#bg {
-    position: fixed;
     background: url(./wallpaper.png) no-repeat fixed, var(--bg-2);
     background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
 }
 
 .container {
@@ -229,8 +222,8 @@ button.btn_decrease {
 }
 
 @media (max-width: 768px) {
-    #bg {
-        background-position: center;
+    body {
+        background: var(--bg-2);
     }
 
     .scoreboard {
