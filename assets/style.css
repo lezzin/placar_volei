@@ -39,7 +39,6 @@ button:hover {
     filter: brightness(85%);
 }
 
-html,
 body {
     font-family: 'Roboto', sans-serif;
     background: url(./wallpaper.png) no-repeat fixed, var(--bg-2);
@@ -70,24 +69,21 @@ main {
     display: grid;
     place-items: center;
     min-height: 100vh;
+    height: auto;
     width: 100%;
     position: relative;
 }
 
 section {
-    position: absolute;
-
-    display: grid;
+    display: none;
     place-items: center;
     pointer-events: none;
-    width: inherit;
-    transition: all .3s ease-in-out;
-    opacity: 0;
+    width: 100%;
 }
 
 section.active {
     pointer-events: initial;
-    opacity: 1;
+    display: grid;
 }
 
 form {
@@ -173,7 +169,7 @@ form button {
     place-items: center;
     width: 2.25rem;
     aspect-ratio: 1;
-    
+
     cursor: default;
     user-select: none;
 }
@@ -185,7 +181,7 @@ form button {
     font-size: 3.6rem;
     padding: .6rem;
     width: 100%;
-    
+
     cursor: default;
     user-select: none;
 }
@@ -230,20 +226,16 @@ button.btn_decrease {
         background-position: center;
     }
 
-    [data-set-display] {
-        margin-top: 3rem;
-    }
-
     .scoreboard {
         gap: 1rem;
     }
 
-    .scoreboard p {
-        font-size: 2.8rem;
+    section:last-of-type {
+        padding: 3rem 0;
     }
 
-    [data-page]:last-of-type {
-        padding-bottom: 2rem;
+    .scoreboard p {
+        font-size: 2.8rem;
     }
 
     .scoreboard button {
