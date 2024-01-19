@@ -116,11 +116,12 @@ form button {
 #set_message {
     text-transform: uppercase;
     color: var(--font);
+    margin-top: 1rem;
 }
 
 .counters_container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 2rem;
@@ -140,13 +141,30 @@ form button {
     font-size: 2.2rem;
 }
 
+.counter .counter_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.counter .counter_header span {
+    background-color: var(--bg-3);
+    border-radius: 3px;
+    font-size: 1.3rem;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    aspect-ratio: 1;
+}
+
 .counter p {
     background-color: var(--bg-3);
     border-radius: 6px;
+    text-align: center;
     font-size: 3.6rem;
     padding: .6rem;
     width: 100%;
-    text-align: center;
 }
 
 .counter .counter_buttons {
@@ -162,26 +180,12 @@ form button {
     font-size: 1.8rem;
 }
 
-.teams_pontuation {
-    display: flex;
-    gap: 1rem;
-}
-
 button.btn_increase {
     background-color: hsl(115, 52%, 39%);
 }
 
 button.btn_decrease {
     background-color: hsl(11, 74%, 47%);
-}
-
-.team_pontuation {
-    font-size: 2.6rem;
-    display: grid;
-    place-items: center;
-    width: 4rem;
-    padding: .6rem;
-    aspect-ratio: 1;
 }
 
 [data-reset-btn] {
@@ -215,20 +219,11 @@ button.btn_decrease {
         font-size: 2.8rem;
     }
 
-    .team_pontuation {
-        font-size: 2.6rem;
-    }
-
     [data-step]:last-of-type {
         padding-bottom: 2rem;
     }
 
     .counter button {
         padding: .6rem 1rem;
-    }
-
-    .teams_pontuation {
-        width: 100%;
-        justify-content: center;
     }
 }
