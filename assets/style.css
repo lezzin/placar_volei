@@ -103,7 +103,7 @@ form button {
     color: var(--font);
 }
 
-.tips_content {
+.hints_content {
     font-size: .8rem;
     border-top: 1px solid var(--bg-1);
     border-bottom: 1px solid var(--bg-1);
@@ -111,12 +111,12 @@ form button {
     margin-top: -1rem;
 }
 
-.tips_content ul {
+.hints_content ul {
     margin-top: .5rem;
     margin-left: 1rem;
 }
 
-.set_display {
+[data-set-display] {
     box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.175);
     border: 2px solid var(--bg-1);
     background-color: var(--bg-3);
@@ -125,13 +125,13 @@ form button {
     font-size: 2rem;
 }
 
-#set_message {
+[data-set-message] {
     text-transform: uppercase;
     color: var(--font);
     margin-top: 1rem;
 }
 
-.counters_container {
+.scoreboards_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,7 +141,7 @@ form button {
     gap: 1rem;
 }
 
-.counter {
+.scoreboard {
     display: grid;
     width: 100%;
     max-width: 300px;
@@ -149,18 +149,18 @@ form button {
     aspect-ratio: 1;
 }
 
-.counter h3 {
+.scoreboard h3 {
     font-size: 2.2rem;
 }
 
-.counter .counter_header {
+.scoreboard .scoreboard_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-.counter .counter_header span {
+.scoreboard .scoreboard_header span {
     background-color: var(--bg-3);
     border-radius: 3px;
     font-size: 1.3rem;
@@ -170,7 +170,7 @@ form button {
     aspect-ratio: 1;
 }
 
-.counter p {
+.scoreboard p {
     background-color: var(--bg-3);
     border-radius: 6px;
     text-align: center;
@@ -179,13 +179,13 @@ form button {
     width: 100%;
 }
 
-.counter .counter_buttons {
+.scoreboard .scoreboard_buttons {
     display: flex;
     width: 100%;
     gap: 0.6rem;
 }
 
-.counter button {
+.scoreboard button {
     flex: 1;
     padding: 1rem 2rem;
     color: var(--font);
@@ -216,26 +216,26 @@ button.btn_decrease {
 
 @media (max-width: 768px) {
     body {
-        background: var(--bg-2);
+        background-position: center;
     }
 
-    .set_display {
+    [data-set-display] {
         margin-top: 3rem;
     }
 
-    .counter {
+    .scoreboard {
         gap: 1rem;
     }
 
-    .counter p {
+    .scoreboard p {
         font-size: 2.8rem;
     }
 
-    [data-step]:last-of-type {
+    [data-page]:last-of-type {
         padding-bottom: 2rem;
     }
 
-    .counter button {
+    .scoreboard button {
         padding: .6rem 1rem;
     }
 }

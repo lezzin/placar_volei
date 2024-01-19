@@ -1,3 +1,22 @@
+// Game variables
+const editableTeamNames = document.querySelectorAll("[contenteditable]")
+
+const setMessage = document.querySelector("[data-set-message]");
+const scoreboardPages = document.querySelectorAll("[data-page]");
+const scoreboardPagesLength = scoreboardPages.length;
+
+const scoreboardsDisplays = document.querySelectorAll("[data-scoreboard]");
+const setDisplay = document.querySelector("[data-set-display]");
+
+const setQuantityInput = document.querySelector("#set_quantity");
+const resetScoreboardsBtn = document.querySelector("[data-reset-btn]");
+
+let selectedScoreboardPage = 0;
+let setQuantity = 3;
+let maxSetPontuation = 25;
+let matchEnded = false;
+let set = 1;
+
 // Function to handle "Enter" key press on contenteditable elements
 const handleEnterKeyPress = ({ code }) => {
     if (code === "Enter") {
@@ -5,92 +24,75 @@ const handleEnterKeyPress = ({ code }) => {
     }
 };
 
-document.querySelectorAll("[contenteditable]").forEach(element => {
-    element.addEventListener("keydown", handleEnterKeyPress);
-});
-
-// Game variables
-const setMessage = document.querySelector("#set_message");
-const counterSteps = document.querySelectorAll("[data-step]");
-const counterDisplays = document.querySelectorAll("[data-counter]");
-const setDisplay = document.querySelector("[data-set-display]");
-const setQuantityInput = document.querySelector("#set_quantity");
-const resetBtn = document.querySelector("[data-reset-btn]");
-const stepsLength = counterSteps.length;
-
-let selectedStep = 0;
-let setQuantity = 3;
-let setPontuation = 25;
-let set = 1;
-let end = false;
-
-// Event listener for setQuantity input
-setQuantityInput.addEventListener("change", ({ target: { value } }) => {
-    setQuantity = value;
-});
-
 // Event listener for step button click
 const handleStepButtonClick = () => {
-    selectedStep++;
+    selectedScoreboardPage++;
 
-    if (selectedStep <= stepsLength - 1) {
-        document.querySelector("[data-step].active").classList.remove("active");
-        counterSteps[selectedStep].classList.add("active");
+    if (selectedScoreboardPage <= scoreboardPagesLength - 1) {
+        document.querySelector("[data-page].active").classList.remove("active");
+        scoreboardPages[selectedScoreboardPage].classList.add("active");
     }
 };
 
-counterSteps[selectedStep].querySelector("[data-btn-step]").addEventListener("click", handleStepButtonClick);
-
-// Event listeners for counter display buttons
-counterDisplays.forEach(display => {
+// Event listeners for scoreboard display buttons
+scoreboardsDisplays.forEach(display => {
     const increaseBtn = display.querySelector(".btn_increase");
     const decreaseBtn = display.querySelector(".btn_decrease");
-    const pointCounter = display.querySelector("p");
-    const victoryCounter = document.querySelector(`.team_pontuation_${display.dataset.teamPontuation}`);
+    const pointscoreboard = display.querySelector("p");
+    const victoryscoreboard = document.querySelector(`.team_pontuation_${display.dataset.teamPontuation}`);
 
-    let counterValue = +pointCounter.textContent;
-    let victoryValue = +victoryCounter.textContent;
+    let scoreboardValue = +pointscoreboard.textContent;
+    let victoryValue = +victoryscoreboard.textContent;
 
     increaseBtn.addEventListener("click", () => {
-        if (!end) {
-            counterValue++;
-            pointCounter.textContent = counterValue;
+        if (!matchEnded) {
+            scoreboardValue++;
+            pointscoreboard.textContent = scoreboardValue;
         }
 
-        if (counterValue >= setPontuation) {
+        if (scoreboardValue >= maxSetPontuation) {
             set++;
 
             if (set > setQuantity) {
-                end = true;
-
-                resetBtn.classList.add("active");
+                matchEnded = true;
+                resetScoreboardsBtn.classList.add("active");
             } else {
                 setDisplay.textContent = `${set}° set`;
             }
 
             victoryValue++;
-            victoryCounter.textContent = `${victoryValue}`
+            victoryscoreboard.textContent = `${victoryValue}`
 
             if (setQuantity == 5 && set == 5) {
-                setPontuation = 15;
+                maxSetPontuation = 15;
                 setMessage.textContent = "Tie Break!";
             }
 
-            counterDisplays.forEach(display => {
+            scoreboardsDisplays.forEach(display => {
                 display.querySelector("p").textContent = 0;
-                counterValue = 0;
+                scoreboardValue = 0;
             });
         }
     });
 
     decreaseBtn.addEventListener("click", () => {
-        if (counterValue > 0) {
-            counterValue--;
-            pointCounter.textContent = counterValue;
+        if (scoreboardValue > 0) {
+            scoreboardValue--;
+            pointscoreboard.textContent = scoreboardValue;
         }
     });
 });
 
-resetBtn.addEventListener("click", () => {
+resetScoreboardsBtn.addEventListener("click", () => {
     window.location.reload()
 });
+
+editableTeamNames.forEach(element => {
+    element.addEventListener("keydown", handleEnterKeyPress);
+});
+
+setQuantityInput.addEventListener("change", ({ target: { value } }) => {
+    setQuantity = value;
+});
+
+scoreboardPages[selectedScoreboardPage].querySelector("[data-btn-step]").addEventListener("click", handleStepButtonClick);

@@ -17,11 +17,11 @@
 <body>
     <div class="container">
         <main>
-            <section data-step class="active">
+            <section data-page class="active">
                 <form class="card" onsubmit="return false">
                     <img src="./logo.png" alt="Logo do website" width="64" height="64" class="logo">
 
-                    <div class="tips_content">
+                    <div class="hints_content">
                         <p>Dicas:</p>
 
                         <ul>
@@ -43,34 +43,34 @@
                 </form>
             </section>
 
-            <section data-step>
-                <h3 class="set_display" data-set-display>1° set</h3>
-                <h4 id="set_message"></h4>
+            <section data-page>
+                <h3 data-set-display>1° set</h3>
+                <h4 data-set-message></h4>
 
-                <div class="counters_container">
-                    <div class="counter card" data-counter data-team-pontuation="0">
-                        <div class="counter_header">
+                <div class="scoreboards_container">
+                    <div class="scoreboard card" data-scoreboard data-team-pontuation="0">
+                        <div class="scoreboard_header">
                             <h3 contenteditable="true">Time 1</h3>
                             <span class="team_pontuation_0">0</span>
                         </div>
 
                         <p>0</p>
 
-                        <div class="counter_buttons">
+                        <div class="scoreboard_buttons">
                             <button type="button" class="btn_decrease">-</button>
                             <button type="button" class="btn_increase">+</button>
                         </div>
                     </div>
 
-                    <div class="counter card" data-counter data-team-pontuation="1">
-                        <div class="counter_header">
+                    <div class="scoreboard card" data-scoreboard data-team-pontuation="1">
+                        <div class="scoreboard_header">
                             <h3 contenteditable="true">Time 2</h3>
                             <span class="team_pontuation_1">0</span>
                         </div>
 
                         <p>0</p>
 
-                        <div class="counter_buttons">
+                        <div class="scoreboard_buttons">
                             <button type="button" class="btn_decrease">-</button>
                             <button type="button" class="btn_increase">+</button>
                         </div>
