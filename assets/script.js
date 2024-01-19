@@ -16,6 +16,8 @@ let setQuantity = 3;
 let maxSetPontuation = 25;
 let matchEnded = false;
 let set = 1;
+let firstTeamPontuation = 0;
+let secondTeamPontuation = 0;
 
 // Function to handle "Enter" key press on contenteditable elements
 const handleEnterKeyPress = ({ code }) => {
@@ -36,32 +38,47 @@ const handleStepButtonClick = () => {
 
 // Event listeners for scoreboard display buttons
 scoreboardsDisplays.forEach(display => {
-    const increaseBtn = display.querySelector(".btn_increase");
-    const decreaseBtn = display.querySelector(".btn_decrease");
-    const pointscoreboard = display.querySelector("p");
-    const victoryscoreboard = document.querySelector(`.team_pontuation_${display.dataset.teamPontuation}`);
+    const increasePontuationBtn = display.querySelector(".btn_increase");
+    const decreasePontuationBtn = display.querySelector(".btn_decrease");
+    const pointScoreboard = display.querySelector("p");
+    const setPontuationScoreboard = display.querySelector(`.team_pontuation_${display.dataset.teamPontuation}`);
 
-    let scoreboardValue = +pointscoreboard.textContent;
-    let victoryValue = +victoryscoreboard.textContent;
+    let scoreboardValue = +pointScoreboard.textContent;
+    let victoryValue = +setPontuationScoreboard.textContent;
 
-    increaseBtn.addEventListener("click", () => {
+    increasePontuationBtn.addEventListener("click", () => {
         if (!matchEnded) {
             scoreboardValue++;
-            pointscoreboard.textContent = scoreboardValue;
+            pointScoreboard.textContent = scoreboardValue;
         }
 
         if (scoreboardValue >= maxSetPontuation) {
             set++;
 
+            if (display.dataset.teamPontuation == 0) {
+                firstTeamPontuation++;
+            } else {
+                secondTeamPontuation++;
+            }
+
             if (set > setQuantity) {
                 matchEnded = true;
                 resetScoreboardsBtn.classList.add("active");
+
+                if (firstTeamPontuation > secondTeamPontuation) {
+                    const teamName = scoreboardsDisplays[0].querySelector("h3").textContent;
+                    setMessage.textContent = `${teamName} venceu!`;
+                } else {
+                    const teamName = scoreboardsDisplays[1].querySelector("h3").textContent;
+                    setMessage.textContent = `${teamName} venceu!`;
+                }
+
             } else {
                 setDisplay.textContent = `${set}° set`;
             }
 
             victoryValue++;
-            victoryscoreboard.textContent = `${victoryValue}`
+            setPontuationScoreboard.textContent = `${victoryValue}`
 
             if (setQuantity == 5 && set == 5) {
                 maxSetPontuation = 15;
@@ -75,10 +92,10 @@ scoreboardsDisplays.forEach(display => {
         }
     });
 
-    decreaseBtn.addEventListener("click", () => {
+    decreasePontuationBtn.addEventListener("click", () => {
         if (scoreboardValue > 0) {
             scoreboardValue--;
-            pointscoreboard.textContent = scoreboardValue;
+            pointScoreboard.textContent = scoreboardValue;
         }
     });
 });
