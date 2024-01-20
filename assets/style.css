@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 :root {
     --bg-1: hsl(27, 83%, 30%);
     --bg-2: hsl(27, 83%, 62%);
@@ -7,6 +17,8 @@
 
     --font-1: #eee;
     --font-2: #171c1b;
+
+    --font-family: 'Roboto', sans-serif;
 }
 
 * {
@@ -40,7 +52,7 @@ button:hover {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family);
     background: url(./wallpaper.png) no-repeat fixed, var(--bg-2);
     background-size: cover;
 }
@@ -79,11 +91,13 @@ section {
     place-items: center;
     pointer-events: none;
     width: 100%;
+    opacity: 0;
 }
 
 section.active {
-    pointer-events: initial;
     display: grid;
+    pointer-events: initial;
+    animation: fade .3s ease forwards;
 }
 
 form {
@@ -113,8 +127,12 @@ form button {
 }
 
 .hints_content ul {
-    margin-top: .5rem;
-    margin-left: 1rem;
+    margin-top: .25rem;
+    list-style-type: none;
+}
+
+.hints_content li::before {
+    content: "• ";
 }
 
 [data-set-display] {

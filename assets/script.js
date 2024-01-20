@@ -1,5 +1,5 @@
 // Game variables
-const editableTeamNames = document.querySelectorAll("[contenteditable]")
+const editableTeamNames = document.querySelectorAll("[contenteditable]");
 
 const setMessage = document.querySelector("[data-set-message]");
 const scoreboardPages = document.querySelectorAll("[data-page]");
@@ -52,7 +52,8 @@ scoreboardsDisplays.forEach(display => {
             pointScoreboard.textContent = scoreboardValue;
         }
 
-        if (scoreboardValue >= maxSetPontuation) {
+        const someTeamWonTheSet = scoreboardValue >= maxSetPontuation;
+        if (someTeamWonTheSet) {
             set++;
 
             if (display.dataset.teamPontuation == 0) {
@@ -61,7 +62,8 @@ scoreboardsDisplays.forEach(display => {
                 secondTeamPontuation++;
             }
 
-            if (set > setQuantity) {
+            const allSetsArePassed = set > setQuantity;
+            if (allSetsArePassed) {
                 matchEnded = true;
                 resetScoreboardsBtn.classList.add("active");
 
@@ -78,9 +80,10 @@ scoreboardsDisplays.forEach(display => {
             }
 
             victoryValue++;
-            setPontuationScoreboard.textContent = `${victoryValue}`
+            setPontuationScoreboard.textContent = `${victoryValue}`;
 
-            if (setQuantity == 5 && set == 5) {
+            const isTieBreak = setQuantity == 5 && set == 5;
+            if (isTieBreak) {
                 maxSetPontuation = 15;
                 setMessage.textContent = "Tie Break!";
             }
@@ -101,7 +104,7 @@ scoreboardsDisplays.forEach(display => {
 });
 
 resetScoreboardsBtn.addEventListener("click", () => {
-    window.location.reload()
+    window.location.reload();
 });
 
 editableTeamNames.forEach(element => {
@@ -113,3 +116,7 @@ setQuantityInput.addEventListener("change", ({ target: { value } }) => {
 });
 
 scoreboardPages[selectedScoreboardPage].querySelector("[data-btn-step]").addEventListener("click", handleStepButtonClick);
+
+window.onload = function () {
+    scoreboardPages[selectedScoreboardPage].classList.add("active");
+}
