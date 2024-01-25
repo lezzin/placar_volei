@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Placar para partidas de vôlei">
     <meta name="author" content="Leandro Adrian da Silva">
-    <meta name="theme-color" content="#ffd105">
 
     <link rel="stylesheet" href="assets/style.css">
     <link rel="icon" href="./logo.png">
@@ -31,11 +30,15 @@
                     </div>
 
                     <div class="form_group">
-                        <label for="set_quantity">Quantidade de sets:</label>
-                        <select id="set_quantity">
-                            <option value="3">3</option>
-                            <option value="5">5</option>
-                        </select>
+                        <p>Quantidade de sets:</p>
+
+                        <div class="set_quantity_choices">
+                            <input type="radio" name="set_quantity" id="set_quantity_3" value="3" hidden checked>
+                            <label for="set_quantity_3" role="button">3</label>
+
+                            <input type="radio" name="set_quantity" id="set_quantity_5" value="5" hidden>
+                            <label for="set_quantity_5" role="button">5</label>
+                        </div>
                     </div>
 
                     <button type="button" data-btn-step>Acessar placar</button>

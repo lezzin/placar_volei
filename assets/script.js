@@ -1,4 +1,7 @@
 // Game variables
+const MPAudio = new Audio("assets/match_point.mp3");
+const TBAudio = new Audio("assets/tie_break.mp3");
+
 const editableTeamNames = document.querySelectorAll("[contenteditable]");
 
 const setMessage = document.querySelector("[data-set-message]");
@@ -8,7 +11,7 @@ const scoreboardPagesLength = scoreboardPages.length;
 const scoreboardsDisplays = document.querySelectorAll("[data-scoreboard]");
 const setDisplay = document.querySelector("[data-set-display]");
 
-const setQuantityInput = document.querySelector("#set_quantity");
+const setQuantityInput = document.querySelectorAll(`input[name="set_quantity"]`);
 const resetScoreboardsBtn = document.querySelector("[data-reset-btn]");
 
 let selectedScoreboardPage = 0;
@@ -49,6 +52,12 @@ scoreboardsDisplays.forEach(display => {
     increasePontuationBtn.addEventListener("click", () => {
         if (!matchEnded) {
             scoreboardValue++;
+
+            const isTieBreak = setQuantity == 5 && set == 5;
+            if (scoreboardValue == 24 || (isTieBreak && scoreboardValue == 14)) {
+                MPAudio.play();
+            }
+
             pointScoreboard.textContent = scoreboardValue;
         }
 
@@ -63,8 +72,9 @@ scoreboardsDisplays.forEach(display => {
             }
 
             const allSetsArePassed = set > setQuantity;
-            if (allSetsArePassed) {
+            if (firstTeamPontuation >= 3 && setQuantity == 5 || secondTeamPontuation >= 3 && setQuantity == 5 || allSetsArePassed) {
                 matchEnded = true;
+
                 resetScoreboardsBtn.classList.add("active");
 
                 if (firstTeamPontuation > secondTeamPontuation) {
@@ -74,7 +84,6 @@ scoreboardsDisplays.forEach(display => {
                     const teamName = scoreboardsDisplays[1].querySelector("h3").textContent;
                     setMessage.textContent = `${teamName} venceu!`;
                 }
-
             } else {
                 setDisplay.textContent = `${set}° set`;
             }
@@ -84,6 +93,7 @@ scoreboardsDisplays.forEach(display => {
 
             const isTieBreak = setQuantity == 5 && set == 5;
             if (isTieBreak) {
+                TBAudio.play();
                 maxSetPontuation = 15;
                 setMessage.textContent = "Tie Break!";
             }
@@ -111,8 +121,10 @@ editableTeamNames.forEach(element => {
     element.addEventListener("keydown", handleEnterKeyPress);
 });
 
-setQuantityInput.addEventListener("change", ({ target: { value } }) => {
-    setQuantity = value;
+setQuantityInput.forEach(element => {
+    element.addEventListener("click", ({ target: { value } }) => {
+        setQuantity = value;
+    });
 });
 
 scoreboardPages[selectedScoreboardPage].querySelector("[data-btn-step]").addEventListener("click", handleStepButtonClick);
