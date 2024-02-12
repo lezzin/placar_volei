@@ -1,0 +1,271 @@
+:root {
+    --bg-1: hsl(27, 83%, 30%);
+    --bg-2: hsl(27, 83%, 62%);
+    --bg-3: hsl(27, 83%, 80%);
+
+    --font-1: #eee;
+    --font-2: #171c1b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+select,
+button {
+    font: inherit;
+    outline: none;
+    border: none;
+
+    padding: .5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 .5rem rgb(0 0 0 / 0.15);
+}
+
+select {
+    background-color: var(--bg-3);
+}
+
+button {
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+button:hover {
+    filter: brightness(85%);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: url(./wallpaper.webp) no-repeat fixed, var(--bg-2);
+    background-size: cover;
+}
+
+.container {
+    width: calc(100% - 1rem);
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.card {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.175);
+    border: 2px solid var(--bg-1);
+    background-color: var(--bg-2);
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.logo {
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    position: relative;
+}
+
+section {
+    display: none;
+    place-items: center;
+    pointer-events: none;
+    width: 100%;
+}
+
+section.active {
+    display: grid;
+    pointer-events: initial;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    color: var(--font-2);
+}
+
+form .form_group {
+    display: grid;
+    gap: .3rem;
+}
+
+form button {
+    background-color: var(--bg-1);
+    color: var(--font-1);
+}
+
+form .set_quantity_choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+form .set_quantity_choices label {
+    flex: 1;
+    display: grid;
+    padding: 1rem;
+    place-items: center;
+    background: var(--bg-3);
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+form .set_quantity_choices input:checked+label {
+    border-color: var(--bg-1);
+    filter: brightness(85%);
+}
+
+.hints_content {
+    font-size: .8rem;
+    border-top: 1px solid var(--bg-1);
+    border-bottom: 1px solid var(--bg-1);
+    padding: 1rem 0;
+    margin-top: -1rem;
+}
+
+.hints_content ul {
+    margin-top: .25rem;
+    list-style-type: none;
+}
+
+.hints_content li::before {
+    content: "• ";
+}
+
+[data-set-display] {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.175);
+    border: 2px solid var(--bg-1);
+    background-color: var(--bg-3);
+    border-radius: 3px;
+    padding: .3rem 1.6rem;
+    font-size: 2rem;
+}
+
+[data-set-message] {
+    text-transform: uppercase;
+    color: var(--font-1);
+    margin-top: 1rem;
+}
+
+.scoreboards_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    width: inherit;
+    gap: 1rem;
+}
+
+.scoreboard {
+    display: grid;
+    width: 100%;
+    max-width: 300px;
+    place-items: center;
+    aspect-ratio: 1;
+}
+
+.scoreboard h3 {
+    font-size: 2.2rem;
+}
+
+.scoreboard .scoreboard_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.scoreboard .scoreboard_header span {
+    background-color: var(--bg-3);
+    border-radius: 3px;
+    font-size: 1.3rem;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    aspect-ratio: 1;
+
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.scoreboard p {
+    background-color: var(--bg-3);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 3.6rem;
+    padding: .6rem;
+    width: 100%;
+
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.scoreboard .scoreboard_buttons {
+    display: flex;
+    width: 100%;
+    gap: 0.6rem;
+}
+
+.scoreboard button {
+    flex: 1;
+    padding: 1rem 2rem;
+    color: var(--font-1);
+    font-size: 1.8rem;
+}
+
+button.btn_increase {
+    background-color: hsl(115, 52%, 39%);
+}
+
+button.btn_decrease {
+    background-color: hsl(11, 74%, 47%);
+}
+
+[data-reset-btn] {
+    display: none;
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 0.175);
+    border: 2px solid var(--bg-1);
+    background-color: var(--bg-3);
+    border-radius: 3px;
+    padding: .4rem 1.6rem;
+    margin-top: 2rem;
+}
+
+[data-reset-btn].active {
+    display: initial;
+}
+
+@media (max-width: 768px) {
+    body {
+        background: var(--bg-2);
+    }
+
+    .scoreboard {
+        gap: 1rem;
+    }
+
+    section:last-of-type {
+        padding: 3rem 0;
+    }
+
+    .scoreboard p {
+        font-size: 2.8rem;
+    }
+
+    .scoreboard button {
+        padding: .6rem 1rem;
+    }
+}
