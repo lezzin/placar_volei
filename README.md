@@ -7,7 +7,7 @@ Placar para um jogo de vôleibol
 ## Recursos
 
 - Seleção de partida de 3 ou 5 rodadas
-- Feedback sonoro quando ocorre Match Point
+- Feedback sonoro quando ocorre Match Point e Tie Break
 
 ## Guia de Instalação
 ### Acesso Local:
