@@ -2,14 +2,12 @@
 
 # Placar para vôlei
 
-Placar para um jogo de vôleibol, com opções de 3 ou 5 rodadas
+Placar para um jogo de vôleibol
 
 ## Recursos
 
-- Sistema de dificuldades (fácil, médio e difícil)
-- Sistema de rankings por dificuldade
-- Autenticação de usuário com Firebase Authentication
-- Persistência dos dados com Firebase Firestore
+- Seleção de partida de 3 ou 5 rodadas
+- Feedback sonoro quando ocorre Match Point
 
 ## Guia de Instalação
 ### Acesso Local:
