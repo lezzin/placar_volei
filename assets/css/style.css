@@ -1,240 +1,262 @@
 @charset "UTF-8";
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 select,
 button {
-  font: inherit;
-  outline: none;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 3px;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+    font: inherit;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
 }
 
 select {
-  background-color: #f3b27c;
+    background-color: #f3b27c;
 }
 
 button {
-  cursor: pointer;
-  transition: all 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
 button:hover {
-  filter: brightness(85%);
+    filter: brightness(85%);
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: url(../images/wallpaper.webp) no-repeat fixed, hsl(27, 83%, 62%);
-  background-size: cover;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: url(../images/wallpaper.webp) no-repeat fixed, hsl(27, 83%, 62%);
+    background-size: cover;
 }
 
 .container {
-  width: calc(100% - 1rem);
-  max-width: 1080px;
-  margin: 0 auto;
+    width: calc(100% - 1rem);
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
 .card {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-  border: 2px solid #954b0e;
-  background-color: hsl(27, 83%, 62%);
-  border-radius: 3px;
-  padding: 1rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    border: 2px solid #954b0e;
+    background-color: hsl(27, 83%, 62%);
+    border-radius: 3px;
+    padding: 1rem;
 }
 
 .logo {
-  border-radius: 3px;
-  margin: 0 auto;
-  margin-bottom: 1rem;
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
 main {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-  height: auto;
-  width: 100%;
-  position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    position: relative;
 }
+
 main section {
-  display: none;
-  place-items: center;
-  pointer-events: none;
-  width: 100%;
-}
-main section.active {
-  display: grid;
-  pointer-events: initial;
+    display: grid;
+    place-items: center;
+    width: 100%;
 }
 
 form {
-  display: grid;
-  gap: 1rem;
-  width: 100%;
-  max-width: 400px;
-  color: #171c1b;
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    color: #171c1b;
 }
+
 form .form_group {
-  display: grid;
-  gap: 0.3rem;
+    display: grid;
+    gap: 0.3rem;
 }
+
 form button {
-  background-color: #954b0e;
-  color: #eee;
+    background-color: #954b0e;
+    color: #eee;
 }
+
 form .set_quantity_choices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
-form .set_quantity_choices label {
-  flex: 1;
-  display: grid;
-  padding: 1rem;
-  place-items: center;
-  background: #f3b27c;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
+
+form .set_quantity_choices button {
+    flex: 1;
+    display: grid;
+    padding: 1rem;
+    place-items: center;
+    background: #f3b27c;
+    color: #000;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
-form .set_quantity_choices input:checked + label {
-  border-color: #954b0e;
-  filter: brightness(85%);
+
+form .set_quantity_choices button.active {
+    border-color: #954b0e;
+    filter: brightness(85%);
 }
 
 .hints_content {
-  font-size: 0.8rem;
-  border-top: 1px solid #954b0e;
-  border-bottom: 1px solid #954b0e;
-  padding: 1rem 0;
-  margin-top: -1rem;
+    font-size: 0.8rem;
+    border-top: 1px solid #954b0e;
+    border-bottom: 1px solid #954b0e;
+    padding: 1rem 0;
+    margin-top: -1rem;
 }
+
 .hints_content ul {
-  margin-top: 0.25rem;
-  list-style-type: none;
+    margin-top: 0.25rem;
+    list-style-type: none;
 }
+
 .hints_content ul li::before {
-  content: "• ";
+    content: "• ";
 }
 
 [data-set-display] {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-  border: 2px solid #954b0e;
-  background-color: #f3b27c;
-  border-radius: 3px;
-  padding: 0.3rem 1.6rem;
-  font-size: 2rem;
-  font-weight: 500;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    border: 2px solid #954b0e;
+    background-color: #f3b27c;
+    border-radius: 3px;
+    padding: 0.3rem 1.6rem;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 [data-set-message] {
-  text-transform: uppercase;
-  color: #eee;
-  margin-top: 1rem;
+    text-transform: uppercase;
+    color: #eee;
+    margin-top: 1rem;
 }
 
 .scoreboards_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  width: inherit;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    width: inherit;
+    gap: 1rem;
 }
+
 .scoreboards_container .scoreboard {
-  display: grid;
-  width: 100%;
-  max-width: 300px;
-  place-items: center;
-  aspect-ratio: 1;
+    display: grid;
+    width: 100%;
+    max-width: 300px;
+    place-items: center;
+    aspect-ratio: 1;
 }
+
 .scoreboards_container .scoreboard h3 {
-  font-size: 2.2rem;
-  font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 600;
 }
+
 .scoreboards_container .scoreboard .scoreboard_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
+
 .scoreboards_container .scoreboard .scoreboard_header span {
-  background-color: #f3b27c;
-  border-radius: 3px;
-  font-size: 1.3rem;
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  aspect-ratio: 1;
-  cursor: default;
-  -moz-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
+    background-color: #f3b27c;
+    border-radius: 3px;
+    font-size: 1.3rem;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    aspect-ratio: 1;
+    cursor: default;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
+
 .scoreboards_container .scoreboard p {
-  background-color: #f3b27c;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 3.6rem;
-  padding: 0.6rem;
-  width: 100%;
-  cursor: default;
-  -moz-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
+    background-color: #f3b27c;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 3.6rem;
+    padding: 0.6rem;
+    width: 100%;
+    cursor: default;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
+
 .scoreboards_container .scoreboard .scoreboard_buttons {
-  display: flex;
-  width: 100%;
-  gap: 0.6rem;
+    display: flex;
+    width: 100%;
+    gap: 0.6rem;
 }
+
 .scoreboards_container .scoreboard .scoreboard_buttons button {
-  flex: 1;
-  padding: 1rem 2rem;
-  color: #eee;
-  font-size: 1.8rem;
+    flex: 1;
+    padding: 1rem 2rem;
+    color: #eee;
+    font-size: 1.8rem;
 }
+
 .scoreboards_container .scoreboard .scoreboard_buttons button.btn_increase {
-  background-color: hsl(115, 52%, 39%);
+    background-color: hsl(115, 52%, 39%);
 }
+
 .scoreboards_container .scoreboard .scoreboard_buttons button.btn_decrease {
-  background-color: hsl(11, 74%, 47%);
+    background-color: hsl(11, 74%, 47%);
 }
 
 [data-reset-btn] {
-  display: none;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-  border: 2px solid #954b0e;
-  background-color: #f3b27c;
-  border-radius: 3px;
-  padding: 0.4rem 1.6rem;
-  margin-top: 2rem;
+    display: none;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    border: 2px solid #954b0e;
+    background-color: #f3b27c;
+    border-radius: 3px;
+    padding: 0.4rem 1.6rem;
+    margin-top: 2rem;
 }
+
 [data-reset-btn].active {
-  display: initial;
+    display: initial;
 }
 
 @media (max-width: 768px) {
-  body {
-    background: hsl(27, 83%, 62%);
-  }
-  .scoreboard {
-    gap: 1rem;
-  }
-  section:last-of-type {
-    padding: 3rem 0;
-  }
-  .scoreboard p {
-    font-size: 2.8rem;
-  }
-  .scoreboard button {
-    padding: 0.6rem 1rem;
-  }
-}/*# sourceMappingURL=style.css.map */
+    body {
+        background: hsl(27, 83%, 62%);
+    }
+
+    .scoreboard {
+        gap: 1rem;
+    }
+
+    section:last-of-type {
+        padding: 3rem 0;
+    }
+
+    .scoreboard p {
+        font-size: 2.8rem;
+    }
+
+    .scoreboard button {
+        padding: 0.6rem 1rem;
+    }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,132 +1,87 @@
-// Game variables
-const MPAudio = new Audio("assets/audio/match_point.wav");
-const TBAudio = new Audio("assets/audio/tie_break.wav");
-
-const editableTeamNames = document.querySelectorAll("[contenteditable]");
-
-const setMessage = document.querySelector("[data-set-message]");
-const scoreboardPages = document.querySelectorAll("[data-page]");
-const scoreboardPagesLength = scoreboardPages.length;
-
-const scoreboardsDisplays = document.querySelectorAll("[data-scoreboard]");
-const setDisplay = document.querySelector("[data-set-display]");
-const setQuantityInput = document.querySelectorAll(`input[name="set_quantity"]`);
-
-const resetScoreboardsBtn = document.querySelector("[data-reset-btn]");
-
-let selectedScoreboardPage = 0;
-let setQuantity = 3;
-let maxSetPontuation = 25;
-let matchEnded = false;
-let set = 1;
-let firstTeamPontuation = 0;
-let secondTeamPontuation = 0;
-
-// Function to handle "Enter" key press on contenteditable elements
-const handleEnterKeyPress = ({ code }) => {
-    if (code === "Enter") {
-        document.activeElement.blur();
-    }
-};
-
-// Event listener for step button click
-const handleStepButtonClick = () => {
-    selectedScoreboardPage++;
-
-    if (selectedScoreboardPage <= scoreboardPagesLength - 1) {
-        document.querySelector("[data-page].active").classList.remove("active");
-        scoreboardPages[selectedScoreboardPage].classList.add("active");
-    }
-
-    setDisplay.textContent = `1° de ${setQuantity} sets`;
-};
-
-// Event listeners for scoreboard display buttons
-scoreboardsDisplays.forEach(display => {
-    const increasePontuationBtn = display.querySelector(".btn_increase");
-    const decreasePontuationBtn = display.querySelector(".btn_decrease");
-    const pointScoreboard = display.querySelector("p");
-    const setPontuationScoreboard = display.querySelector(`.team_pontuation_${display.dataset.teamPontuation}`);
-
-    let scoreboardValue = +pointScoreboard.textContent;
-    let victoryValue = +setPontuationScoreboard.textContent;
-
-    increasePontuationBtn.addEventListener("click", () => {
-        if (!matchEnded) {
-            scoreboardValue++;
-
-            const isTieBreak = setQuantity == 5 && set == 5;
-            if (scoreboardValue == 24 || (isTieBreak && scoreboardValue == 14)) {
-                MPAudio.play();
-            }
-
-            pointScoreboard.textContent = scoreboardValue;
+new Vue({
+    data: function() {
+        return {
+            currentPage: 0,
+            setQuantity: 3,
+            currentSet: 1,
+            firstTeamPoints: 0,
+            secondTeamPoints: 0,
+            maxSetPoints: 25,
+            matchEnded: false,
+            setMessage: '',
+            scoreboards: [
+                { name: 'Time 1', points: 0, setPoints: 0 },
+                { name: 'Time 2', points: 0, setPoints: 0 }
+            ],
+            MPAudio: new Audio("assets/audio/match_point.wav"),
+            TBAudio: new Audio("assets/audio/tie_break.wav")
         }
+    },
+    methods: {
+        changeSetQuantity(quantity) {
+            this.setQuantity = quantity;
+        },
+        nextPage() {
+            this.currentPage++;
+        },
+        handleEnterKeyPress(event) {
+            if (event.code === "Enter") {
+                event.target.blur();
+            }
+        },
+        increasePoints(index) {
+            if (this.matchEnded) return;
 
-        const someTeamWonTheSet = scoreboardValue >= maxSetPontuation;
-        if (someTeamWonTheSet) {
-            set++;
-
-            if (display.dataset.teamPontuation == 0) {
-                firstTeamPontuation++;
-            } else {
-                secondTeamPontuation++;
+            this.scoreboards[index].points++;
+            if (this.scoreboards[index].points === 24 || (this.setQuantity === 5 && this.currentSet === 5 && this.scoreboards[index].points === 14)) {
+                this.MPAudio.play();
             }
 
-            const allSetsArePassed = set > setQuantity;
-            if (firstTeamPontuation >= 3 && setQuantity == 5 || secondTeamPontuation >= 3 && setQuantity == 5 || allSetsArePassed) {
-                matchEnded = true;
+            if (this.scoreboards[index].points >= this.maxSetPoints) {
+                this.endSet(index);
+            }
+        },
+        decreasePoints(index) {
+            if (this.scoreboards[index].points > 0) {
+                this.scoreboards[index].points--;
+            }
+        },
+        endSet(winningIndex) {
+            this.currentSet++;
+            this.scoreboards[winningIndex].setPoints++;
 
-                resetScoreboardsBtn.classList.add("active");
+            if (this.scoreboards[0].setPoints >= 3 || this.scoreboards[1].setPoints >= 3 || this.currentSet > this.setQuantity) {
+                this.matchEnded = true;
+                this.setMessage = `${this.scoreboards[winningIndex].name} venceu!`;
+            } else {
+                this.setMessage = `${this.currentSet}° de ${this.setQuantity} sets`;
 
-                if (firstTeamPontuation > secondTeamPontuation) {
-                    const teamName = scoreboardsDisplays[0].querySelector("h3").textContent;
-                    setMessage.textContent = `${teamName} venceu!`;
-                } else {
-                    const teamName = scoreboardsDisplays[1].querySelector("h3").textContent;
-                    setMessage.textContent = `${teamName} venceu!`;
+                if (this.setQuantity === 5 && this.currentSet === 5) {
+                    this.TBAudio.play();
+                    this.maxSetPoints = 15;
+                    this.setMessage = "Tie Break!";
                 }
-            } else {
-                setDisplay.textContent = `${set}° de ${setQuantity} sets`;
             }
 
-            victoryValue++;
-            setPontuationScoreboard.textContent = `${victoryValue}`;
-
-            const isTieBreak = setQuantity == 5 && set == 5;
-            if (isTieBreak) {
-                TBAudio.play();
-                maxSetPontuation = 15;
-                setMessage.textContent = "Tie Break!";
-            }
-
-            scoreboardsDisplays.forEach(display => {
-                display.querySelector("p").textContent = 0;
-                scoreboardValue = 0;
+            this.resetPoints();
+        },
+        resetPoints() {
+            this.scoreboards.forEach(scoreboard => {
+                scoreboard.points = 0;
+            });
+        },
+        resetScoreboards() {
+            this.currentPage = 0;
+            this.currentSet = 1;
+            this.firstTeamPoints = 0;
+            this.secondTeamPoints = 0;
+            this.maxSetPoints = 25;
+            this.matchEnded = false;
+            this.setMessage = '';
+            this.scoreboards.forEach(scoreboard => {
+                scoreboard.points = 0;
+                scoreboard.setPoints = 0;
             });
         }
-    });
-
-    decreasePontuationBtn.addEventListener("click", () => {
-        if (scoreboardValue > 0) {
-            scoreboardValue--;
-            pointScoreboard.textContent = scoreboardValue;
-        }
-    });
-});
-
-resetScoreboardsBtn.addEventListener("click", () => {
-    window.location.reload();
-});
-
-editableTeamNames.forEach(element => {
-    element.addEventListener("keydown", handleEnterKeyPress);
-});
-
-setQuantityInput.forEach(element => {
-    element.addEventListener("click", ({ target: { value } }) => {
-        setQuantity = value;
-    });
-});
-
-scoreboardPages[selectedScoreboardPage].querySelector("[data-btn-step]").addEventListener("click", handleStepButtonClick);
+    }
+}).$mount("#app");
