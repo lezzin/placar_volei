@@ -1,21 +1,25 @@
+const DEFAULT_STATE = function () {
+    return {
+        currentPage: 0,
+        setQuantity: 3,
+        currentSet: 1,
+        firstTeamPoints: 0,
+        secondTeamPoints: 0,
+        maxSetPoints: 25,
+        matchEnded: false,
+        setMessage: '',
+        scoreboards: [
+            { name: 'Time 1', points: 0, setPoints: 0 },
+            { name: 'Time 2', points: 0, setPoints: 0 }
+        ],
+        MPAudio: new Audio("assets/audio/match_point.wav"),
+        TBAudio: new Audio("assets/audio/tie_break.wav")
+    };
+};
+
 new Vue({
-    data: function() {
-        return {
-            currentPage: 0,
-            setQuantity: 3,
-            currentSet: 1,
-            firstTeamPoints: 0,
-            secondTeamPoints: 0,
-            maxSetPoints: 25,
-            matchEnded: false,
-            setMessage: '',
-            scoreboards: [
-                { name: 'Time 1', points: 0, setPoints: 0 },
-                { name: 'Time 2', points: 0, setPoints: 0 }
-            ],
-            MPAudio: new Audio("assets/audio/match_point.wav"),
-            TBAudio: new Audio("assets/audio/tie_break.wav")
-        }
+    data() {
+        return DEFAULT_STATE();
     },
     methods: {
         changeSetQuantity(quantity) {
@@ -70,17 +74,10 @@ new Vue({
             });
         },
         resetScoreboards() {
-            this.currentPage = 0;
-            this.currentSet = 1;
-            this.firstTeamPoints = 0;
-            this.secondTeamPoints = 0;
-            this.maxSetPoints = 25;
-            this.matchEnded = false;
-            this.setMessage = '';
-            this.scoreboards.forEach(scoreboard => {
-                scoreboard.points = 0;
-                scoreboard.setPoints = 0;
-            });
+            Object.assign(this.$data, DEFAULT_STATE());
         }
+    },
+    mounted() {
+        document.body.classList.add("loaded");
     }
 }).$mount("#app");

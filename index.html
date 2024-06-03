@@ -29,11 +29,17 @@
                     <div class="form_group">
                         <p>Quantidade de sets:</p>
                         <div class="set_quantity_choices">
-                            <button type="button" @click="changeSetQuantity(3)" :class="{ active: setQuantity == 3 }">3</button>
-                            <button type="button" @click="changeSetQuantity(5)" :class="{ active: setQuantity == 5 }">5</button>
+                            <button type="button" @click="changeSetQuantity(3)" :class="{ active: setQuantity == 3 }"
+                                title="Selecionar quantidade de sets">
+                                3
+                            </button>
+                            <button type="button" @click="changeSetQuantity(5)" :class="{ active: setQuantity == 5 }"
+                                title="Selecionar quantidade de sets">
+                                5
+                            </button>
                         </div>
                     </div>
-                    <button type="button" @click="nextPage">Acessar placar</button>
+                    <button type="button" @click="nextPage" title="Acessar placar">Acessar placar</button>
                 </form>
             </section>
 
@@ -48,12 +54,12 @@
                         </div>
                         <p>{{ scoreboard.points }}</p>
                         <div class="scoreboard_buttons">
-                            <button type="button" @click="decreasePoints(index)" class="btn_decrease">-</button>
-                            <button type="button" @click="increasePoints(index)" class="btn_increase">+</button>
+                            <button type="button" @click="decreasePoints(index)" class="btn_decrease" title="Abaixar pontuação">-</button>
+                            <button type="button" @click="increasePoints(index)" class="btn_increase" title="Aumentar pontuação">+</button>
                         </div>
                     </div>
                 </div>
-                <button type="button" @click="resetScoreboards" data-reset-btn>Voltar para o início</button>
+                <button type="button" @click="resetScoreboards" data-reset-btn title="Voltar para o início">Voltar para o início</button>
             </section>
         </main>
     </div>

@@ -1,4 +1,10 @@
-@charset "UTF-8";
+:root {
+    --color-primary-100: #954b0e;
+    --color-primary-500: #ef964e;
+    --color-primary-600: #f3b27c;
+    --color-danger: #d1401f;
+    --color-success: #389730;
+}
 
 * {
     margin: 0;
@@ -17,7 +23,7 @@ button {
 }
 
 select {
-    background-color: #f3b27c;
+    background-color: var(--color-primary-600);
 }
 
 button {
@@ -26,13 +32,28 @@ button {
 }
 
 button:hover {
-    filter: brightness(85%);
+    filter: brightness(90%);
 }
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: url(../images/wallpaper.webp) no-repeat fixed, hsl(27, 83%, 62%);
+    background: url(../images/wallpaper.webp) no-repeat fixed;
     background-size: cover;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    opacity: 0;
+    transition: opacity .6s ease-in;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+body.loaded main {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
 }
 
 .container {
@@ -43,8 +64,8 @@ body {
 
 .card {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-    border: 2px solid #954b0e;
-    background-color: hsl(27, 83%, 62%);
+    border: 2px solid var(--color-primary-100);
+    background-color: var(--color-primary-500);
     border-radius: 3px;
     padding: 1rem;
 }
@@ -58,10 +79,10 @@ body {
 main {
     display: grid;
     place-items: center;
-    min-height: 100vh;
-    height: auto;
     width: 100%;
     position: relative;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 main section {
@@ -84,7 +105,7 @@ form .form_group {
 }
 
 form button {
-    background-color: #954b0e;
+    background-color: var(--color-primary-100);
     color: #eee;
 }
 
@@ -99,7 +120,7 @@ form .set_quantity_choices button {
     display: grid;
     padding: 1rem;
     place-items: center;
-    background: #f3b27c;
+    background: var(--color-primary-600);
     color: #000;
     border-radius: 3px;
     border: 1px solid transparent;
@@ -108,14 +129,14 @@ form .set_quantity_choices button {
 }
 
 form .set_quantity_choices button.active {
-    border-color: #954b0e;
+    border-color: var(--color-primary-100);
     filter: brightness(85%);
 }
 
 .hints_content {
     font-size: 0.8rem;
-    border-top: 1px solid #954b0e;
-    border-bottom: 1px solid #954b0e;
+    border-top: 1px solid var(--color-primary-100);
+    border-bottom: 1px solid var(--color-primary-100);
     padding: 1rem 0;
     margin-top: -1rem;
 }
@@ -131,8 +152,8 @@ form .set_quantity_choices button.active {
 
 [data-set-display] {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-    border: 2px solid #954b0e;
-    background-color: #f3b27c;
+    border: 2px solid var(--color-primary-100);
+    background-color: var(--color-primary-600);
     border-radius: 3px;
     padding: 0.3rem 1.6rem;
     font-size: 2rem;
@@ -175,7 +196,7 @@ form .set_quantity_choices button.active {
 }
 
 .scoreboards_container .scoreboard .scoreboard_header span {
-    background-color: #f3b27c;
+    background-color: var(--color-primary-600);
     border-radius: 3px;
     font-size: 1.3rem;
     display: grid;
@@ -183,22 +204,16 @@ form .set_quantity_choices button.active {
     width: 2.25rem;
     aspect-ratio: 1;
     cursor: default;
-    -moz-user-select: none;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .scoreboards_container .scoreboard p {
-    background-color: #f3b27c;
+    background-color: var(--color-primary-600);
     border-radius: 6px;
     text-align: center;
     font-size: 3.6rem;
     padding: 0.6rem;
     width: 100%;
     cursor: default;
-    -moz-user-select: none;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .scoreboards_container .scoreboard .scoreboard_buttons {
@@ -215,17 +230,17 @@ form .set_quantity_choices button.active {
 }
 
 .scoreboards_container .scoreboard .scoreboard_buttons button.btn_increase {
-    background-color: hsl(115, 52%, 39%);
+    background-color: var(--color-success);
 }
 
 .scoreboards_container .scoreboard .scoreboard_buttons button.btn_decrease {
-    background-color: hsl(11, 74%, 47%);
+    background-color: var(--color-danger);
 }
 
 [data-reset-btn] {
+    background-color: var(--color-primary-100);
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-    border: 2px solid #954b0e;
-    background-color: #f3b27c;
+    color: #eee;
     border-radius: 3px;
     padding: 0.4rem 1.6rem;
     margin-top: 3rem;
@@ -233,7 +248,7 @@ form .set_quantity_choices button.active {
 
 @media (max-width: 768px) {
     body {
-        background: hsl(27, 83%, 62%);
+        background: var(--color-primary-500);
     }
 
     .scoreboard {
@@ -252,5 +267,3 @@ form .set_quantity_choices button.active {
         padding: 0.6rem 1rem;
     }
 }
-
-/*# sourceMappingURL=style.css.map */
