@@ -53,9 +53,8 @@ new Vue({
             if (this.scoreboards[0].setPoints >= 3 || this.scoreboards[1].setPoints >= 3 || this.currentSet > this.setQuantity) {
                 this.matchEnded = true;
                 this.setMessage = `${this.scoreboards[winningIndex].name} venceu!`;
+                this.currentSet--;
             } else {
-                this.setMessage = `${this.currentSet}° de ${this.setQuantity} sets`;
-
                 if (this.setQuantity === 5 && this.currentSet === 5) {
                     this.TBAudio.play();
                     this.maxSetPoints = 15;

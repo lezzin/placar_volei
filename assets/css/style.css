@@ -141,7 +141,6 @@ form .set_quantity_choices button.active {
 
 [data-set-message] {
     text-transform: uppercase;
-    color: #eee;
     margin-top: 1rem;
 }
 
@@ -224,17 +223,12 @@ form .set_quantity_choices button.active {
 }
 
 [data-reset-btn] {
-    display: none;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
     border: 2px solid #954b0e;
     background-color: #f3b27c;
     border-radius: 3px;
     padding: 0.4rem 1.6rem;
-    margin-top: 2rem;
-}
-
-[data-reset-btn].active {
-    display: initial;
+    margin-top: 3rem;
 }
 
 @media (max-width: 768px) {
