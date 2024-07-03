@@ -1,4 +1,4 @@
-<h1 align="center"> 🚀 <br> Placar para vôlei</h1>
+<h1 align="center"> 🏐 <br> Placar para vôlei</h1>
 
 ![Placar para Vôlei](https://github.com/lezzin/placar_volei/assets/103830032/bc186091-4f63-4beb-9e7b-c457fa8268a7)
 
