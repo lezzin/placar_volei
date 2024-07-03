@@ -21,7 +21,7 @@ Para usar o aplicativo localmente, baixe a pasta do projeto, navegue até a mesm
 
 - HTML
 - CSS
-- JavaScript
+- Vue.js (CDN)
 
 ## Contato
 
