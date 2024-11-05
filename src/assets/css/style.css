@@ -19,7 +19,7 @@ button {
     border: none;
     padding: 0.5rem;
     border-radius: 3px;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 15%);
+    box-shadow: 0 0 0.5rem #00000026;
 }
 
 select {
@@ -39,13 +39,11 @@ body {
     font-family: system-ui, -apple-system, sans-serif;
     background: url(../images/wallpaper.webp) no-repeat fixed;
     background-size: cover;
-    -moz-user-select: none;
     user-select: none;
-    -webkit-user-select: none;
 }
 
 .card {
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 17.5%);
+    box-shadow: 0 1rem 3rem #0000002d;
     border: 2px solid var(--color-primary-100);
     background-color: var(--color-primary-500);
     border-radius: 3px;
