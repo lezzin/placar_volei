@@ -1,5 +1,6 @@
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive } from 'vue';
+
 import MatchSetup from './components/MatchSetup.vue';
 import Scoreboard from './components/Scoreboard.vue';
 
@@ -25,16 +26,27 @@ const nextPage = () => {
 };
 
 const handleNameChange = (event) => {
-    const index = scoreboards.findIndex(s => s.name === event.target.textContent);
+    const MAX_LENGTH = 8;
+    let newName = event.target.textContent;
+
+    if (newName.length > MAX_LENGTH) {
+        newName = newName.slice(0, MAX_LENGTH);
+        event.target.textContent = newName;
+    }
+
+    const index = scoreboards.findIndex(s => s.name === event.target.dataset.originalName);
+
     if (index !== -1) {
-        scoreboards[index].name = event.target.textContent;
+        scoreboards[index].name = newName;
     }
 };
+
 
 const increasePoints = (index) => {
     if (matchEnded.value) return;
 
     scoreboards[index].points++;
+
     if (scoreboards[index].points === 24 || (setQuantity.value === 5 && currentSet.value === 5 && scoreboards[index].points === 14)) {
         MPAudio.play();
     }
@@ -85,38 +97,53 @@ const resetScoreboards = () => {
         { name: 'Time 2', points: 0, setPoints: 0 }
     );
 };
-
-onMounted(() => {
-    document.body.classList.add("loaded");
-});
 </script>
 
 <template>
     <div class="container">
         <main>
-            <section v-if="currentPage == 0">
-                <MatchSetup @changeSetQuantity="changeSetQuantity" @nextPage="nextPage" />
-            </section>
+            <Transition name="fade">
+                <section v-if="currentPage == 0">
+                    <MatchSetup @changeSetQuantity="changeSetQuantity" @nextPage="nextPage" />
+                </section>
+            </Transition>
 
-            <section v-if="currentPage == 1">
-                <h3 class="set-display">{{ currentSet }}° de {{ setQuantity }} sets</h3>
-                <h4 class="set-message">{{ setMessage }}</h4>
+            <Transition name="fade">
+                <section v-if="currentPage == 1">
+                    <h3 class="set-display">{{ currentSet }}° de {{ setQuantity }} sets</h3>
+                    <h4 class="set-message">{{ setMessage }}</h4>
 
-                <div class="scoreboards_container">
-                    <Scoreboard v-for="(scoreboard, index) in scoreboards" :key="index" :scoreboard="scoreboard"
-                        :index="index" @name-change="handleNameChange" @increase="increasePoints"
-                        @decrease="decreasePoints" />
-                </div>
+                    <div class="scoreboards_container">
+                        <Scoreboard v-for="(scoreboard, index) in scoreboards" :key="index" :scoreboard="scoreboard"
+                            :index="index" @name-change="handleNameChange" @increase="increasePoints"
+                            @decrease="decreasePoints" />
+                    </div>
 
-                <button type="button" @click="resetScoreboards" class="btn-reset" title="Voltar para o início">
-                    Voltar para o início
-                </button>
-            </section>
+                    <button type="button" @click="resetScoreboards" class="btn-reset" title="Voltar para o início">
+                        Voltar para o início
+                    </button>
+                </section>
+            </Transition>
         </main>
     </div>
 </template>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+}
+
 .scoreboards_container {
     display: flex;
     align-items: center;
@@ -157,20 +184,20 @@ onMounted(() => {
     margin: 0 auto;
 }
 
-main {
+section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     display: grid;
     place-items: center;
-    width: 100%;
-    position: relative;
-    height: 100vh;
-    overflow-y: hidden;
+
+    @media(max-width: 768px) {
+        margin: 10vh 0;
+    }
 }
 
-section {
-    display: grid;
-    place-items: center;
-    width: 100%;
-}
 
 section:last-of-type {
     padding: 3rem 0;

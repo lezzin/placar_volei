@@ -42,18 +42,6 @@ body {
     -moz-user-select: none;
     user-select: none;
     -webkit-user-select: none;
-    opacity: 0;
-    transition: opacity .6s ease-in;
-}
-
-body.loaded {
-    opacity: 1;
-}
-
-body.loaded main {
-    min-height: 100vh;
-    height: auto;
-    overflow-y: auto;
 }
 
 .card {

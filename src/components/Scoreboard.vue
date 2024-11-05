@@ -33,11 +33,13 @@ defineProps({
     max-width: 300px;
     place-items: center;
     aspect-ratio: 1;
+    overflow-x: hidden;
 }
 
 .scoreboard h3 {
     font-size: 2.2rem;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .scoreboard_header {
