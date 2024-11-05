@@ -11,6 +11,7 @@ const changeSetQuantity = (quantity) => {
 };
 
 const nextPage = () => {
+    if (auxiliarQuantity.value === 0) return;
     emit('nextPage');
 };
 </script>
