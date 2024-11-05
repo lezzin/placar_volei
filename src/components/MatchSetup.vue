@@ -43,7 +43,8 @@ const nextPage = () => {
                 </button>
             </div>
         </div>
-        <button type="button" @click="nextPage" title="Acessar placar">Acessar placar</button>
+
+        <button type="button" @click="nextPage" class="btn-scoreboard" title="Acessar placar">Acessar placar</button>
     </form>
 </template>
 
@@ -67,11 +68,6 @@ form .form_group {
     gap: 0.3rem;
 }
 
-form button {
-    background-color: var(--color-primary-100);
-    color: #eee;
-}
-
 .hints_content {
     font-size: 0.8rem;
     border-top: 1px solid var(--color-primary-100);
@@ -88,7 +84,6 @@ form button {
 .hints_content ul li::before {
     content: "• ";
 }
-
 
 .set_quantity_choices {
     display: flex;
@@ -112,5 +107,10 @@ form button {
 .set_quantity_choices button.active {
     border-color: var(--color-primary-100);
     filter: brightness(85%);
+}
+
+.btn-scoreboard {
+    background-color: var(--color-primary-100);
+    color: #eee;
 }
 </style>

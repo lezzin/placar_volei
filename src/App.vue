@@ -156,10 +156,10 @@ const resetScoreboards = () => {
 
 .btn-reset {
     background-color: var(--color-primary-100);
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1rem 3rem #0000002d;
     color: #eee;
     border-radius: 3px;
-    padding: 0.4rem 1.6rem;
+    padding: 0.6rem 1.2rem;
     margin-top: 3rem;
 }
 
@@ -169,7 +169,7 @@ const resetScoreboards = () => {
 }
 
 .set-display {
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1rem 3rem #0000002d;
     border: 2px solid var(--color-primary-100);
     background-color: var(--color-primary-600);
     border-radius: 3px;
