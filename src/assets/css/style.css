@@ -38,7 +38,7 @@ button:hover {
 }
 
 body {
-    font-family: 'Roboto', system-ui, sans-serif;
+    font-family: Roboto, system-ui, sans-serif;
     background: url("../images/wallpaper.webp") no-repeat fixed;
     background-size: cover;
     user-select: none;
