@@ -1,0 +1,65 @@
+:root {
+    --color-primary-100: #954b0e;
+    --color-primary-500: #ef964e;
+    --color-primary-600: #f3b27c;
+    --color-danger: #d1401f;
+    --color-success: #389730;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+select,
+button {
+    font: inherit;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 15%);
+}
+
+select {
+    background-color: var(--color-primary-600);
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    filter: brightness(90%);
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: url(../images/wallpaper.webp) no-repeat fixed;
+    background-size: cover;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    opacity: 0;
+    transition: opacity .6s ease-in;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+body.loaded main {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+}
+
+.card {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 17.5%);
+    border: 2px solid var(--color-primary-100);
+    background-color: var(--color-primary-500);
+    border-radius: 3px;
+    padding: 1rem;
+}
