@@ -17,7 +17,7 @@ Placar para um jogo de vôleibol
 
 Para usar o aplicativo localmente, baixe a pasta do projeto, navegue até a mesma e clique duas vezes sobre o arquivo `index.html`.
 
-## Tecnologias Utilizadas:
+## Tecnologias Utilizadas
 
 - HTML
 - CSS

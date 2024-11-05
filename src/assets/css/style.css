@@ -37,7 +37,7 @@ button:hover {
 
 body {
     font-family: system-ui, -apple-system, sans-serif;
-    background: url(../images/wallpaper.webp) no-repeat fixed;
+    background: url("../images/wallpaper.webp") no-repeat fixed;
     background-size: cover;
     user-select: none;
 }
